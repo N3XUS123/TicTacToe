@@ -829,7 +829,7 @@ a.todo-list-item:focus {
   nav {
     width: 100%!important;
   }
-  main {
+  header {
     margin-left: 0px!important;
   }
 }
