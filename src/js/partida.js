@@ -49,10 +49,12 @@ function pcelda(celda) {
         case 2:
             consola.innerHTML = `¡Ganan los O!<a class="nav-link" href="javascript:location.reload()">
         Reiniciar</a>`;
+        clearInterval(crono);
             break;
         case 3:
             consola.innerHTML = `¡Empate!<a class="nav-link" href="javascript:location.reload()">
         Reiniciar</a>`;
+        clearInterval(crono);
             break;
     }
 }
