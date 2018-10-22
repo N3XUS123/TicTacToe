@@ -1,9 +1,12 @@
 var tablero = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var jugador = 1;
 var dificultad = 1;
+var inicio = 0;
+var crono;
 
 // Dibujar tablero
 function dibujar() {
+
     for (i = 0; i < 9; i++) {
         if (tablero[i] == 0) document.getElementById("celda" + i).style = "background-color: white !important";
         if (tablero[i] == 1) document.getElementById("celda" + i).style = "background-image: url('images/equis.png'); background-size: 98px; background-repeat: no-repeat;";
@@ -14,25 +17,34 @@ function dibujar() {
 function pcelda(celda) {
     let consola = document.getElementById("consola");
     if (tablero[celda] == 0) {
+
         if (jugador == 1) {
             tablero[celda] = 1;
+            if (inicio == 0) {
+                var n = 0;
+                var l = document.getElementById("number");
+                crono=window.setInterval(function () {
+                    l.innerHTML = n;
+                    n++;
+                }, 1000);
+                inicio++;
+            }
             jugador = 2;
-        } else {
-            tablero[celda] = 2;
-            jugador = 1;
+            ia(dificultad);
         }
+
     } else {
         consola.innerHTML = "¡No puedes pulsar sobre una celda coloreada!";
     }
     dibujar();
     let r = ganador();
-
     switch (r) {
         case 0:
             break;
         case 1:
             consola.innerHTML = `¡Ganan las X!<a class="nav-link" href="javascript:location.reload()">
         Reiniciar</a>`;
+        clearInterval(crono);
             break;
         case 2:
             consola.innerHTML = `¡Ganan los O!<a class="nav-link" href="javascript:location.reload()">
@@ -68,14 +80,29 @@ function ganador() {
         return 3;
     }
 }
-/*
+
 function ia(dificultad) {
+    let celdaRandom;
     if (dificultad == 1) {
-        
+        if (tablero.includes(0)) {
+            do {
+                celdaRandom = Math.floor(Math.random() * tablero.length);
+            } while (tablero[celdaRandom] != 0);
+            tablero[celdaRandom] = 2;
+            dibujar();
+        }
     } else if (dificultad == 2) {
-
+        if (tablero.includes(0)) {
+            // Seleccionar celda medio
+            tablero[celdaRandom] = 2;
+            dibujar();
+        }
     } else {
-
+        if (tablero.includes(0)) {
+            // Seleccionar celda dificil
+            tablero[celdaRandom] = 2;
+            dibujar();
+        }
     }
     jugador = 1;
-}*/
+}
