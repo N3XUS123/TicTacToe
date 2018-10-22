@@ -5,6 +5,7 @@ var inicio = 0;
 var crono;
 var celdas = document.getElementsByClassName('celda');
 var consola = document.getElementById("consola");
+var partidaTerminada = false;
 
 // Dibujar tablero
 function dibujar() {
@@ -41,7 +42,6 @@ function ganador() {
 
 // Escoger celda
 window.onload = function seleccionJugador() {
-    let celdaSeleccionada;
     for (let i = 0; i < celdas.length; i++) {
         celdas[i].onclick = () => marcarJugador(celdas[i].getAttribute('celda'));
     }
@@ -50,15 +50,16 @@ window.onload = function seleccionJugador() {
 
 // Marcar celda
 function marcarJugador(celdaSeleccionada) {
-    if (tablero[celdaSeleccionada] == 0) {
-        iniciarTiempo();
-        tablero[celdaSeleccionada] = 1;
-        jugador = 2;
-        pasarTurno();
-    } else {
-        consola.innerHTML = "¡Esa celda ya está marcada!";
+    if (!partidaTerminada) {
+        if (tablero[celdaSeleccionada] == 0) {
+            iniciarTiempo();
+            tablero[celdaSeleccionada] = 1;
+            jugador = 2;
+            pasarTurno();
+        } else {
+            consola.innerHTML = "¡Esa celda ya está marcada!";
+        }
     }
-
 }
 
 // Iniciar tiempo
@@ -78,7 +79,9 @@ function iniciarTiempo() {
 function pasarTurno() {
     dibujar();
     let g = ganador();
-    if (!endGame(g) && jugador == 2) {
+    if (endGame(g)) {
+        partidaTerminada = true;
+    } else if (!endGame(g) && jugador == 2) {
         ia(dificultad);
     }
 }
