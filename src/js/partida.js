@@ -17,7 +17,6 @@ function pcelda(celda) {
         if (jugador == 1) {
             tablero[celda] = 1;
             jugador = 2;
-        } else {
             ia(dificultad);
         }
     } else {
@@ -25,7 +24,6 @@ function pcelda(celda) {
     }
     dibujar();
     let r = ganador();
-
     switch (r) {
         case 0:
             break;
@@ -69,19 +67,27 @@ function ganador() {
 }
 
 function ia(dificultad) {
+    let celdaRandom;
     if (dificultad == 1) {
-        let rand;
-        do {
-            rand = tablero[Math.floor(Math.random() * tablero.length)];
-            console.log(rand);
-            if (rand == 0) {
-                dibujar();
-            }
-        } while (rand != 0);            
+        if (tablero.includes(0)) {
+            do {
+                celdaRandom = Math.floor(Math.random() * tablero.length);
+            } while (tablero[celdaRandom] != 0);
+            tablero[celdaRandom] = 2;
+            dibujar();
+        }
     } else if (dificultad == 2) {
-
+        if (tablero.includes(0)) {
+            // Seleccionar celda medio
+            tablero[celdaRandom] = 2;
+            dibujar();
+        }
     } else {
-
+        if (tablero.includes(0)) {
+            // Seleccionar celda dificil
+            tablero[celdaRandom] = 2;
+            dibujar();
+        }
     }
     jugador = 1;
 }
