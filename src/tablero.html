@@ -27,6 +27,7 @@
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <style>
+<<<<<<< HEAD
 	* {
 		margin: 0;
 		padding: 0;
@@ -123,24 +124,27 @@
 <body>
 	<div class="container-fluid" id="wrapper">
 		<div class="row">
-			<nav id="sidebar" class="sidebar col-lg-3 bg-faded sidebar-style-1">
-				<h1 class="site-title"><a href="tablero.html"><em class="fa fa-rocket"></em> TicTacToe</a></h1>
-
-				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
-
-				<ul class="nav nav-pills flex-column sidebar-nav">
-					<li class="nav-item"><a class="nav-link active" href="tablero.html"><em class="fa fa-dashboard"></em>
-							Tablero
-							<span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-calendar-o"></em> Ranking</a></li>
-					<a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
-				</ul>
-
-			</nav>
+				<nav id="sidebar" class="sidebar col-lg-3 bg-faded sidebar-style-1">
+						<h1 class="site-title"><a href="tablero.html"><em class="fa fa-rocket"></em> TicTacToe</a></h1>
+		
+						<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
+		
+						<ul class="nav nav-pills flex-column sidebar-nav">
+							<li class="nav-item"><a class="nav-link active" href="tablero.html"><em class="fa fa-dashboard"></em>
+									Tablero
+									<span class="sr-only">(current)</span></a></li>
+							<li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-calendar-o"></em> Ranking</a></li>
+							<li class="nav-item"><a class="nav-link" href="javascript:location.reload()">
+								Reiniciar</a></li>
+							<a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
+						</ul>
+		
+					</nav>
 
 			<main id="main" class="col-md-12 pt-3 pl-4">
 				<header class="page-header row justify-center">
-					<a href="#" class="btn btn-default col-1" id="toggleNav"><em class="fa fa-bars"></em></a>
+						<a href="#" class="btn btn-default col-1" id="toggleNav"><em class="fa fa-bars"></em></a>
+						
 					<div class="col-md-6 col-lg-7">
 						<h1 class="float-left text-center text-md-left">Tres en raya</h1>
 					</div>
@@ -155,9 +159,9 @@
 						</a>
 
 						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a
-							 class="dropdown-item" href="#"> Fácil</a>
-							<a class="dropdown-item" href="#"> Normal</a>
-							<a class="dropdown-item" href="#"> Difícil</a></div>
+							 class="dropdown-item" href="javascript:location.reload()"> Fácil</a>
+							<a class="dropdown-item" href="javascript:location.reload()"> Normal</a>
+							<a class="dropdown-item" href="javascript:location.reload()"> Difícil</a></div>
 					</div>
 					<div class="clear"></div>
 				</header>
@@ -172,10 +176,22 @@
 					<div id="celda7" celda="7" class="celda" onclick="pcelda(7)"></div>
 					<div id="celda8" celda="8" class="celda" onclick="pcelda(8)"></div>
 				</div>
+			
 				<div id="consola"></div>
+<<<<<<< HEAD
 				<div id="contenedor">
 					<div id="number"></div>
 				</div>
+=======
+				
+				<div id="number"></div>
+				<!-- <div id="contenedor">
+					<div class="reloj" id="Horas">00</div>
+					<div class="reloj" id="Minutos">:00</div>
+					<div class="reloj" id="Segundos">:00</div>
+					<div class="reloj" id="Centesimas">:00</div>
+				</div> -->
+>>>>>>> e8d20464bc74eff2a30cc46976bfff0e095b8234
 			</main>
 		</div>
 	</div>
