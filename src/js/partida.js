@@ -1,5 +1,6 @@
 var tablero = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 var jugador = 1;
+var dificultad = 1;
 
 // Dibujar tablero
 function dibujar() {
@@ -62,3 +63,14 @@ function ganador() {
         return 3;
     }
 }
+/*
+function ia(dificultad) {
+    if (dificultad == 1) {
+        
+    } else if (dificultad == 2) {
+
+    } else {
+
+    }
+    jugador = 1;
+}*/
