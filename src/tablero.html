@@ -106,8 +106,8 @@
 		}
 	
 		div#consola {
-			width: 310px;
-			height: 30px;
+			width: 200px;
+			height: 70px;
 			padding: 7px;
 			border: 5px solid #999;
 			background-color: white;
@@ -130,6 +130,8 @@
 									Tablero
 									<span class="sr-only">(current)</span></a></li>
 							<li class="nav-item"><a class="nav-link" href="#"><em class="fa fa-calendar-o"></em> Ranking</a></li>
+							<li class="nav-item"><a class="nav-link" href="javascript:location.reload()">
+								Reiniciar</a></li>
 							<a href="#" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
 						</ul>
 		
@@ -138,6 +140,7 @@
 			<main id="main" class="col-md-12 pt-3 pl-4">
 				<header class="page-header row justify-center">
 						<a href="#" class="btn btn-default col-1" id="toggleNav"><em class="fa fa-bars"></em></a>
+						
 					<div class="col-md-6 col-lg-7">
 						<h1 class="float-left text-center text-md-left">Tres en raya</h1>
 					</div>
@@ -152,9 +155,9 @@
 						</a>
 
 						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink"><a
-							 class="dropdown-item" href="#"> Fácil</a>
-							<a class="dropdown-item" href="#"> Normal</a>
-							<a class="dropdown-item" href="#"> Difícil</a></div>
+							 class="dropdown-item" href="javascript:location.reload()"> Fácil</a>
+							<a class="dropdown-item" href="javascript:location.reload()"> Normal</a>
+							<a class="dropdown-item" href="javascript:location.reload()"> Difícil</a></div>
 					</div>
 
 					<div class="clear"></div>
@@ -170,7 +173,9 @@
 					<div id="celda7" celda="7" class="celda" onclick="pcelda(7)"></div>
 					<div id="celda8" celda="8" class="celda" onclick="pcelda(8)"></div>
 				</div>
+			
 				<div id="consola"></div>
+				
 				<div id="contenedor">
 					<div class="reloj" id="Horas">00</div>
 					<div class="reloj" id="Minutos">:00</div>
