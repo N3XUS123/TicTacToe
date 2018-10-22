@@ -23,7 +23,7 @@ function pcelda(celda) {
             if (inicio == 0) {
                 var n = 0;
                 var l = document.getElementById("number");
-                crono=window.setInterval(function () {
+                crono = window.setInterval(function () {
                     l.innerHTML = n;
                     n++;
                 }, 1000);
@@ -44,7 +44,7 @@ function pcelda(celda) {
         case 1:
             consola.innerHTML = `¡Ganan las X!<a class="nav-link" href="javascript:location.reload()">
         Reiniciar</a>`;
-        clearInterval(crono);
+            clearInterval(crono);
             break;
         case 2:
             consola.innerHTML = `¡Ganan los O!<a class="nav-link" href="javascript:location.reload()">
