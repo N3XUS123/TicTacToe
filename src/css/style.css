@@ -841,3 +841,8 @@ a.todo-list-item:focus {
 #registro{
   margin-top: 3% !important;
 }
+
+#number {
+  font-size:50px;
+  color:#434343;
+}
