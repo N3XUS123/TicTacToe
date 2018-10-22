@@ -110,7 +110,7 @@
 		padding: 7px;
 		border: 5px solid #999;
 		background-color: white;
-		margin: 10px auto;
+		margin: 20px auto;
 		text-align: center;
 		color: darkgreen;
 	}
@@ -119,72 +119,103 @@
 		font-size: 30px;
 		color: #434343;
 	}
+
+	@media only screen and (max-width: 1260px) {
+		#menu-toggle {
+			letter-spacing: initial;
+		}
+	}
+
+	@media only screen and (min-width: 1024px) {
+		#main>div>div {
+			margin-left: 15% !important;
+		}
+	}
+
+	/**@media screen and (max-width: 768px) {
+		.sidebar {
+			position: initial;
+			padding-bottom: 0px;
+			margin-bottom: 1rem;
+		}
+		#menu-toggle{
+			display: inherit;
+		}
+
+		
+	} */
+
+	.container-fluid {
+		position: initial;
+	}
 </style>
 
 <body>
 	<div class="container-fluid" id="wrapper">
-		<div class="row">
-			<nav id="sidebar" class="sidebar col-lg-3 bg-faded">
-				<h1 class="site-title"><a href="tablero.html"><em class="fa fa-rocket"></em> TicTacToe</a></h1>
+		<main id="main">
+			<div class="row">
+				<nav id="menu" class="sidebar col-lg-2 col-md-4 col-sm-12 col-xs-12 bg-faded">
 
-				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
+					<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
 
-				<ul class="nav nav-pills flex-column sidebar-nav">
-					<li class="nav-item"><a class="nav-link active" href="tablero.html"><em class="fa fa-dashboard"></em>
-							Tablero
-							<span class="sr-only">(current)</span></a></li>
-					<li class="nav-item"><a class="nav-link" href="ranking.html"><em class="fa fa-calendar-o"></em> Ranking</a></li>
-					<li class="nav-item"><a class="nav-link" href="javascript:location.reload()">
-							Reiniciar</a></li>
-					<a href="login.html" class="logout-button"><em class="fa fa-power-off"></em> Signout</a>
-				</ul>
-
-			</nav>
-
-			<main id="main" class="col-lg-12 mx-auto">
-				<header class="page-header row justify-center">
-					<div class="col-lg-7">
-						<a href="#" class="btn btn-default float-left col-1" id="toggleNav"><em class="fa fa-bars"></em></a>
-						<h1 class="float-left text-center text-md-left col-11">Tres en raya</h1>
-					</div>
-					<div class="dropdown user-dropdown col-md-6 col-lg-5 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle"
-						 href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<h1 class="site-title"><a href="tablero.html"><em class="fa fa-rocket"></em> TicTacToe</a></h1>
+					<ul class="nav nav-pills flex-column sidebar-nav">
+						<li class="nav-item"><a class="nav-link active" href="tablero.html"><em class="fa fa-dashboard"></em>
+								Tablero
+								<span class="sr-only">(current)</span></a></li>
+						<li class="nav-item"><a class="nav-link" href="ranking.html"><em class="fa fa-calendar-o"></em> Ranking</a></li>
+						<li class="nav-item"><a class="nav-link" href="javascript:location.reload()">
+								Reiniciar</a></li>
+						<a href="login.html" class="logout-button justify-center"><em class="fa fa-power-off"></em> Signout</a>
+					</ul>
+				</nav>
+				<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 mx-auto">
+					<header class="page-header justify-center">
+						<div class="col-lg-6">
+							<h1>Tres en raya</h1>
+						</div>
+						<div class="dropdown user-dropdown col-md-6 col-lg-5 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle"
+							 href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
 
-							<div class="username mt-1">
-								<h4 class="mb-1">Dificultad</h4>
+								<div class="username mt-1">
+									<h4 class="mb-1">Dificultad</h4>
+								</div>
+							</a>
+
+							<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
+								<button id="dificultad1" class="dropdown-item">Fácil</button>
+								<button id="dificultad2" class="dropdown-item"> Normal</button>
+								<button id="dificultad3" class="dropdown-item"> Difícil</button>
 							</div>
-						</a>
-
-						<div class="dropdown-menu dropdown-menu-right" style="margin-right: 1.5rem;" aria-labelledby="dropdownMenuLink">
-							<button id="dificultad1" class="dropdown-item">Fácil</button>
-							<button id="dificultad2" class="dropdown-item"> Normal</button>
-							<button id="dificultad3" class="dropdown-item"> Difícil</button>
 						</div>
-					</div>
-					<div class="clear"></div>
-				</header>
-				<div class="row col-9 ml-auto">
-					<div class="col-lg-7">
-						<div id="tablero">
-							<div id="celda0" celda="0" class="celda"></div>
-							<div id="celda1" celda="1" class="celda"></div>
-							<div id="celda2" celda="2" class="celda"></div>
-							<div id="celda3" celda="3" class="celda"></div>
-							<div id="celda4" celda="4" class="celda"></div>
-							<div id="celda5" celda="5" class="celda"></div>
-							<div id="celda6" celda="6" class="celda"></div>
-							<div id="celda7" celda="7" class="celda"></div>
-							<div id="celda8" celda="8" class="celda"></div>
+						<div class="clear"></div>
+					</header>
+					<div class="row">
+						<div class="col-lg-6 col-md-5 col-sm-4 col-xs-3">
+							<div id="tablero">
+								<div id="celda0" celda="0" class="celda"></div>
+								<div id="celda1" celda="1" class="celda"></div>
+								<div id="celda2" celda="2" class="celda"></div>
+								<div id="celda3" celda="3" class="celda"></div>
+								<div id="celda4" celda="4" class="celda"></div>
+								<div id="celda5" celda="5" class="celda"></div>
+								<div id="celda6" celda="6" class="celda"></div>
+								<div id="celda7" celda="7" class="celda"></div>
+								<div id="celda8" celda="8" class="celda"></div>
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-5">
-						<div id="consola"></div>
-						<div id="number" class="text-center"></div>
+						<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+							<div class="row">
+								<div id="consola" class="col-12"></div>
+								<div id="number" class="text-center col-12"></div>
+							</div>
+						</div>
 					</div>
 				</div>
-			</main>
-		</div>
+			</div>
+		</main>
+	</div>
 	</div>
 	<script src="js/jquery-3.2.1.min.js"></script>
 	<script src="dist/js/bootstrap.min.js"></script>

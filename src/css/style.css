@@ -405,8 +405,7 @@ a.bg-primary:hover {
 .sidebar .logout-button {
   position: absolute;
   bottom: 20px;
-  left: 20px;
-  width: 85%;
+  width: 100%;
   text-align: center;
   border-radius: .3rem;
 }
@@ -438,7 +437,7 @@ a.bg-primary:hover {
   }
 
   .sidebar {
-    position: inherit;
+    position: initial;
     padding-bottom: 0px;
     margin-bottom: 1rem;
   }
@@ -448,7 +447,7 @@ a.bg-primary:hover {
   }
 }
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 768px) {
   #wrapper.toggled .sidebar-nav {
     display: block;
   }
