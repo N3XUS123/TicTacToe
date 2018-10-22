@@ -833,5 +833,11 @@ a.todo-list-item:focus {
     margin-left: 0px!important;
   }
 }
+#wrapper div.col-xl-3.col-lg-6.col-md-6.col-sm-8.col-12{
+  margin: 0 auto;
+  margin-top: 10%;
+}
 
-
+#registro{
+  margin-top: 3% !important;
+}
