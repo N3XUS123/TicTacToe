@@ -3,62 +3,18 @@ var jugador = 1;
 var dificultad = 1;
 var inicio = 0;
 var crono;
+var celdas = document.getElementsByClassName('celda');
+var consola = document.getElementById("consola");
 
 // Dibujar tablero
 function dibujar() {
-
     for (i = 0; i < 9; i++) {
-        if (tablero[i] == 0) document.getElementById("celda" + i).style = "background-color: white !important";
         if (tablero[i] == 1) document.getElementById("celda" + i).style = "background-image: url('images/equis.png'); background-size: 98px; background-repeat: no-repeat;";
         if (tablero[i] == 2) document.getElementById("celda" + i).style = "background-image: url('images/circulo.png'); background-size: 100px; background-repeat: no-repeat;";
     }
 }
 
-function pcelda(celda) {
-    let consola = document.getElementById("consola");
-    if (tablero[celda] == 0) {
-
-        if (jugador == 1) {
-            tablero[celda] = 1;
-            if (inicio == 0) {
-                var n = 0;
-                var l = document.getElementById("number");
-                crono = window.setInterval(function () {
-                    l.innerHTML = n;
-                    n++;
-                }, 1000);
-                inicio++;
-            }
-            jugador = 2;
-            ia(dificultad);
-        }
-
-    } else {
-        consola.innerHTML = "¡No puedes pulsar sobre una celda coloreada!";
-    }
-    dibujar();
-    let r = ganador();
-    switch (r) {
-        case 0:
-            break;
-        case 1:
-            consola.innerHTML = `¡Ganan las X!<a class="nav-link" href="javascript:location.reload()">
-        Reiniciar</a>`;
-            clearInterval(crono);
-            break;
-        case 2:
-            consola.innerHTML = `¡Ganan los O!<a class="nav-link" href="javascript:location.reload()">
-        Reiniciar</a>`;
-        clearInterval(crono);
-            break;
-        case 3:
-            consola.innerHTML = `¡Empate!<a class="nav-link" href="javascript:location.reload()">
-        Reiniciar</a>`;
-        clearInterval(crono);
-            break;
-    }
-}
-
+// Comprobar si alguien ha ganado
 function ganador() {
     var numEspacios = 0;
     for (i = 0; i < 9; i++) {
@@ -83,6 +39,80 @@ function ganador() {
     }
 }
 
+// Escoger celda
+window.onload = function seleccionJugador() {
+    let celdaSeleccionada;
+    for (let i = 0; i < celdas.length; i++) {
+        celdas[i].onclick = () => marcarJugador(celdas[i].getAttribute('celda'));
+    }
+
+}
+
+// Marcar celda
+function marcarJugador(celdaSeleccionada) {
+    if (tablero[celdaSeleccionada] == 0) {
+        iniciarTiempo();
+        tablero[celdaSeleccionada] = 1;
+        jugador = 2;
+        pasarTurno();
+    } else {
+        consola.innerHTML = "¡Esa celda ya está marcada!";
+    }
+
+}
+
+// Iniciar tiempo
+function iniciarTiempo() {
+    if (inicio == 0) {
+        var n = 0;
+        var l = document.getElementById("number");
+        crono = window.setInterval(function () {
+            l.innerHTML = n;
+            n++;
+        }, 1000);
+        inicio++;
+    }
+}
+
+// Pasar de turno
+function pasarTurno() {
+    dibujar();
+    let g = ganador();
+    if (!endGame(g) && jugador == 2) {
+        ia(dificultad);
+    }
+}
+
+// Terminar partida si alguien gana.
+function endGame(g) {
+    let fin;
+    switch (g) {
+        case 0:
+            fin = false;
+            break;
+        case 1:
+            consola.innerHTML = `¡Ganan las X!<a class="nav-link" href="javascript:location.reload()">
+        Reiniciar</a>`;
+            clearInterval(crono);
+            fin = true;
+            break;
+        case 2:
+            consola.innerHTML = `¡Ganan los O!<a class="nav-link" href="javascript:location.reload()">
+        Reiniciar</a>`;
+            clearInterval(crono);
+            fin = true;
+            break;
+        case 3:
+            consola.innerHTML = `¡Empate!<a class="nav-link" href="javascript:location.reload()">
+        Reiniciar</a>`;
+            clearInterval(crono);
+            fin = true;
+            break;
+    }
+    return fin;
+}
+
+// Inteligencia artificial.
 function ia(dificultad) {
     let celdaRandom;
     if (dificultad == 1) {
@@ -107,4 +137,5 @@ function ia(dificultad) {
         }
     }
     jugador = 1;
+    pasarTurno();
 }
