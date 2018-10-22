@@ -31,8 +31,7 @@ function pcelda(celda) {
             }
             jugador = 2;
         } else {
-            tablero[celda] = 2;
-            jugador = 1;
+            ia(dificultad);
         }
 
     } else {
@@ -83,14 +82,21 @@ function ganador() {
         return 3;
     }
 }
-/*
+
 function ia(dificultad) {
     if (dificultad == 1) {
-        
+        let rand;
+        do {
+            rand = tablero[Math.floor(Math.random() * tablero.length)];
+            console.log(rand);
+            if (rand == 0) {
+                dibujar();
+            }
+        } while (rand != 0);            
     } else if (dificultad == 2) {
 
     } else {
 
     }
     jugador = 1;
-}*/
+}
