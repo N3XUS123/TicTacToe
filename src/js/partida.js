@@ -12,6 +12,7 @@ function dibujar() {
 }
 
 function pcelda(celda) {
+    let consola = document.getElementById("consola");
     if (tablero[celda] == 0) {
         if (jugador == 1) {
             tablero[celda] = 1;
@@ -21,21 +22,25 @@ function pcelda(celda) {
             jugador = 1;
         }
     } else {
-        alert("No puedes pulsar sobre una celda coloreada");
+        consola.innerHTML = "¡No puedes pulsar sobre una celda coloreada!";
     }
     dibujar();
     let r = ganador();
+
     switch (r) {
         case 0:
             break;
         case 1:
-            alert("¡Ganó el rojo!");
+            consola.innerHTML = `¡Ganó el rojo!<a class="nav-link" href="javascript:location.reload()">
+        Reiniciar</a>`;
             break;
         case 2:
-            alert("¡Ganó el azul!");
+            consola.innerHTML = `¡Ganó el azul!<a class="nav-link" href="javascript:location.reload()">
+        Reiniciar</a>`;
             break;
         case 3:
-            alert("¡Empate!");
+            consola.innerHTML = `¡Empate!<a class="nav-link" href="javascript:location.reload()">
+        Reiniciar</a>`;
             break;
     }
 }
