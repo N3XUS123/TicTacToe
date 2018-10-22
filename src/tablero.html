@@ -10,9 +10,9 @@
 
 	<meta name="author" content="">
 
-	<link rel="icon" href="images/favicon.ico">
+	<link rel="icon" href="images/favicon/icono.png">
 
-	<title>Medialoot Bootstrap 4 Dashboard Template</title>
+	<title>Tic Tac Toe</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -124,7 +124,7 @@
 <body>
 	<div class="container-fluid" id="wrapper">
 		<div class="row">
-			<nav id="sidebar" class="sidebar col-lg-3 bg-faded sidebar-style-1">
+			<nav class="sidebar col-lg-3 bg-faded">
 				<h1 class="site-title"><a href="tablero.html"><em class="fa fa-rocket"></em> TicTacToe</a></h1>
 
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
@@ -141,15 +141,12 @@
 
 			</nav>
 
-			<main id="main" class="col-md-12 pt-3 pl-4">
+			<main id="main" class="col-lg-9">
 				<header class="page-header row justify-center">
-					<a href="#" class="btn btn-default col-1" id="toggleNav"><em class="fa fa-bars"></em></a>
-
-					<div class="col-md-6 col-lg-7">
+					<div class="col-lg-7">
 						<h1 class="float-left text-center text-md-left">Tres en raya</h1>
 					</div>
-
-					<div class="dropdown user-dropdown col-md-6 col-lg-4 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle"
+					<div class="dropdown user-dropdown col-md-6 col-lg-5 text-center text-md-right"><a class="btn btn-stripped dropdown-toggle"
 						 href="https://example.com" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
 
@@ -165,20 +162,27 @@
 					</div>
 					<div class="clear"></div>
 				</header>
-				<div id="tablero">
-					<div id="celda0" celda="0" class="celda" onclick="pcelda(0)"></div>
-					<div id="celda1" celda="1" class="celda" onclick="pcelda(1)"></div>
-					<div id="celda2" celda="2" class="celda" onclick="pcelda(2)"></div>
-					<div id="celda3" celda="3" class="celda" onclick="pcelda(3)"></div>
-					<div id="celda4" celda="4" class="celda" onclick="pcelda(4)"></div>
-					<div id="celda5" celda="5" class="celda" onclick="pcelda(5)"></div>
-					<div id="celda6" celda="6" class="celda" onclick="pcelda(6)"></div>
-					<div id="celda7" celda="7" class="celda" onclick="pcelda(7)"></div>
-					<div id="celda8" celda="8" class="celda" onclick="pcelda(8)"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-7">
+							<div id="tablero">
+								<div id="celda0" celda="0" class="celda" onclick="pcelda(0)"></div>
+								<div id="celda1" celda="1" class="celda" onclick="pcelda(1)"></div>
+								<div id="celda2" celda="2" class="celda" onclick="pcelda(2)"></div>
+								<div id="celda3" celda="3" class="celda" onclick="pcelda(3)"></div>
+								<div id="celda4" celda="4" class="celda" onclick="pcelda(4)"></div>
+								<div id="celda5" celda="5" class="celda" onclick="pcelda(5)"></div>
+								<div id="celda6" celda="6" class="celda" onclick="pcelda(6)"></div>
+								<div id="celda7" celda="7" class="celda" onclick="pcelda(7)"></div>
+								<div id="celda8" celda="8" class="celda" onclick="pcelda(8)"></div>
+							</div>
+						</div>
+						<div class="col-lg-5">
+							<div id="consola"></div>
+							<div id="number"></div>
+						</div>
+					</div>
 				</div>
-
-				<div id="consola"></div>
-				<div id="number"></div>
 			</main>
 		</div>
 	</div>
@@ -193,7 +197,6 @@
 	<script src="js/tiempo.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
 	 crossorigin="anonymous"></script>
-
 	<script src="js/partida.js"></script>
 
 </body>

@@ -6,8 +6,8 @@ var dificultad = 1;
 function dibujar() {
     for (i = 0; i < 9; i++) {
         if (tablero[i] == 0) document.getElementById("celda" + i).style = "background-color: white !important";
-        if (tablero[i] == 1) document.getElementById("celda" + i).style = "background-color: red !important";
-        if (tablero[i] == 2) document.getElementById("celda" + i).style = "background-color: blue !important";
+        if (tablero[i] == 1) document.getElementById("celda" + i).style = "background-image: url('images/equis.png'); background-size: 98px; background-repeat: no-repeat;";
+        if (tablero[i] == 2) document.getElementById("celda" + i).style = "background-image: url('images/circulo.png'); background-size: 100px; background-repeat: no-repeat;";
     }
 }
 
@@ -31,11 +31,11 @@ function pcelda(celda) {
         case 0:
             break;
         case 1:
-            consola.innerHTML = `¡Ganó el rojo!<a class="nav-link" href="javascript:location.reload()">
+            consola.innerHTML = `¡Ganan las X!<a class="nav-link" href="javascript:location.reload()">
         Reiniciar</a>`;
             break;
         case 2:
-            consola.innerHTML = `¡Ganó el azul!<a class="nav-link" href="javascript:location.reload()">
+            consola.innerHTML = `¡Ganan los O!<a class="nav-link" href="javascript:location.reload()">
         Reiniciar</a>`;
             break;
         case 3:
