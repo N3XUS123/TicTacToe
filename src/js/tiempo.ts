@@ -1,6 +1,16 @@
-var n:number = 0;
-var l:any= document.getElementById("number");
-window.setInterval(function(){
-  l.innerHTML = n;
-  n++;
-},1000);
+var inicio:number=0;
+var crono:any;
+
+
+// Iniciar tiempo
+function iniciarTiempo() {
+  if (inicio == 0) {
+      let n:number = 1;
+      let l:any = document.getElementById("number");
+      crono = window.setInterval(function () {
+          l.innerHTML = n;
+          n++;
+      }, 1000);
+      inicio++;
+  }
+}

@@ -75,18 +75,7 @@ function marcarJugador(celdaSeleccionada) {
     }
 }
 
-// Iniciar tiempo
-function iniciarTiempo() {
-    if (inicio == 0) {
-        let n = 0;
-        let l = document.getElementById("number");
-        crono = window.setInterval(function () {
-            l.innerHTML = n;
-            n++;
-        }, 1000);
-        inicio++;
-    }
-}
+
 
 // Pasar de turno
 function pasarTurno() {
