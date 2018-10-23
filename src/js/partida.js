@@ -7,6 +7,7 @@ var celdas = document.getElementsByClassName('celda');
 var consola = document.getElementById("consola");
 var partidaTerminada = false;
 
+// Combos ganadores para la IA.
 var COMBOS = {
     ganadores: [
         [0, 1, 2],
@@ -54,12 +55,10 @@ function ganador() {
     }
 }
 
-// Escoger celda
-window.onload = function seleccionJugador() {
-    for (let i = 0; i < celdas.length; i++) {
-        celdas[i].onclick = () => marcarJugador(celdas[i].getAttribute('celda'));
-    }
-}
+// Seleccionar celda jugador
+$('.celda').click(function (e) {
+    marcarJugador($(this).data('celda'));
+});
 
 // Marcar celda
 function marcarJugador(celdaSeleccionada) {
@@ -74,8 +73,6 @@ function marcarJugador(celdaSeleccionada) {
         }
     }
 }
-
-
 
 // Pasar de turno
 function pasarTurno() {
@@ -96,22 +93,19 @@ function endGame(g) {
             fin = false;
             break;
         case 1:
-            consola.innerHTML = `¡Ganan las X!<a class="nav-link" id="reiniciarPartida">
-        Reiniciar</a>`;
+            consola.innerHTML = `¡Ganan las X!<a class="nav-link" id="reiniciarPartida"> Reiniciar</a>`;
             document.getElementById('reiniciarPartida').onclick = () => reiniciarPartida();
             clearInterval(crono);
             fin = true;
             break;
         case 2:
-            consola.innerHTML = `¡Ganan los O!<a class="nav-link" id="reiniciarPartida">
-        Reiniciar</a>`;
+            consola.innerHTML = `¡Ganan los O!<a class="nav-link" id="reiniciarPartida"> Reiniciar</a>`;
             document.getElementById('reiniciarPartida').onclick = () => reiniciarPartida();
             clearInterval(crono);
             fin = true;
             break;
         case 3:
-            consola.innerHTML = `¡Empate!<a class="nav-link" id="reiniciarPartida">
-        Reiniciar</a>`;
+            consola.innerHTML = `¡Empate!<a class="nav-link" id="reiniciarPartida"> Reiniciar</a>`;
             document.getElementById('reiniciarPartida').onclick = () => reiniciarPartida();
             clearInterval(crono);
             fin = true;
@@ -119,71 +113,60 @@ function endGame(g) {
     }
     return fin;
 }
-
 // Inteligencia artificial.
 function ia(dificultad) {
     let celdaRandom;
-    if (dificultad == 1) {
-        if (tablero.includes(0)) {
+    if (tablero.includes(0)) {
+        if (dificultad == 1) {
             do {
-                celdaRandom = Math.floor(Math.random() * tablero.length);
+                celdaRandom = randomNum(tablero.length);
             } while (tablero[celdaRandom] != 0);
             tablero[celdaRandom] = 2;
             dibujar();
-        }
-    } else if (dificultad == 2) {
-        if (tablero.includes(0)) {
-            if (crono % 2 == 0) {
-                celdaRandom = mejorJugada();
+        } else if (dificultad == 2) {
+            celdaRandom = pensamientoIA();
+            tablero[celdaRandom] = 2;
+            dibujar();
+        } else {
+            if (countEmptyCells() == 8) {
+                celdaRandom = hardFirstStep();
             } else {
-                if (tablero.includes(0)) {
-                    do {
-                        celdaRandom = Math.floor(Math.random() * tablero.length);
-                    } while (tablero[celdaRandom] != 0);
-                }
+                celdaRandom = pensamientoIA();
             }
+            contador++;
             tablero[celdaRandom] = 2;
             dibujar();
         }
-    } else {
-        if (tablero.includes(0)) {
-            celdaRandom = mejorJugada();
-            tablero[celdaRandom] = 2;
-            dibujar();
-        }
+        jugador = 1;
+        pasarTurno();
     }
-    jugador = 1;
-    pasarTurno();
 }
 
 // Cambiar dificultad
-document.getElementById('dificultad1').onclick = () => {
+$('.dificultad').click(function (e) {
     reiniciarPartida();
-    dificultad = 1;
-}
+    dificultad = $(this).data('dificultad');
+});
 
-document.getElementById('dificultad2').onclick = () => {
+$('.reiniciar').on('click', function () {
+    console.log("hola")
     reiniciarPartida();
-    dificultad = 2;
-}
-document.getElementById('dificultad3').onclick = () => {
-    reiniciarPartida();
-    dificultad = 3;
-}
+});
 
 // Reinicia la partida
 function reiniciarPartida() {
     tablero = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     jugador = 1;
     inicio = 0;
+    contador = 0;
     clearInterval(crono);
     consola.innerHTML = '';
     partidaTerminada = false;
     dibujar();
 }
 
-
-function mejorJugada() {
+// Pensamiento de la inteligencia artificial
+function pensamientoIA() {
 
     // Posibles combos
     let puntuacionCeldas = [3, 2, 3, 2, 4, 2, 3, 2, 3];
@@ -246,12 +229,129 @@ function mejorJugada() {
 
 }
 
+// Contar numero de celdas vacias.
 function countEmptyCells() {
     let loop = 0;
-    for (var i = 0; i < tablero.length; i++) {
+    for (let i = 0; i < tablero.length; i++) {
         if (tablero[i] == 0) {
-           loop++;
+            loop++;
         }
     }
     return loop;
+}
+
+// Devolver un número aleatorio
+function randomNum(max) {
+    return Math.floor(Math.random() * max);
+}
+
+// Primer paso del modo dificil. 
+// Debido a que la IA podía ser ganada con facilidad.
+function hardFirstStep() {
+    let random = randomNum(4);
+    if (tablero[4] == 1) {
+        switch (random) {
+            case 0:
+                return 0;
+            case 1:
+                return 2;
+            case 2:
+                return 6;
+            case 3:
+                return 8;
+        }
+    } else if (tablero[0] == 1 || tablero[2] == 1 || tablero[6] == 1 || tablero[8] == 1) {
+        switch (random) {
+            case 0:
+                return 1;
+            case 1:
+                return 3;
+            case 2:
+                return 5;
+            case 3:
+                return 7;
+        }
+    } else {
+        return pensamientoIA();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var tablero = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+var jugador = 1;
+var dificultad = 2;
+var inicio = 0;
+var crono;
+var celdas = document.getElementsByClassName('celda');
+var consola = document.getElementById("consola");
+var partidaTerminada = false;
+
+// Combos ganadores para la IA.
+var COMBOS = {
+    ganadores: [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
+};
+
+// Dibujar tablero
+function dibujar() {
+    for (i = 0; i < 9; i++) {
+        if (tablero[i] == 0) document.getElementById("celda" + i).style = "background-image: url(''); background-size: 98px; background-repeat: no-repeat;";
+        if (tablero[i] == 1) document.getElementById("celda" + i).style = "background-image: url('images/equis.png'); background-size: 98px; background-repeat: no-repeat;";
+        if (tablero[i] == 2) document.getElementById("celda" + i).style = "background-image: url('images/circulo.png'); background-size: 100px; background-repeat: no-repeat;";
+    }
+}
+
+// Comprobar si alguien ha ganado
+function ganador() {
+    let numEspacios = 0;
+    for (i = 0; i < 9; i++) {
+        if (tablero[i] == 0) numEspacios++;
+    }
+    // Las líneas horizontales
+    if (tablero[0] == tablero[1] && tablero[1] == tablero[2] && tablero[0] != 0) return tablero[0];
+    if (tablero[3] == tablero[4] && tablero[4] == tablero[5] && tablero[3] != 0) return tablero[3];
+    if (tablero[6] == tablero[7] && tablero[7] == tablero[8] && tablero[6] != 0) return tablero[6];
+    //Las líneas verticales
+    if (tablero[0] == tablero[3] && tablero[3] == tablero[6] && tablero[0] != 0) return tablero[0];
+    if (tablero[1] == tablero[4] && tablero[4] == tablero[7] && tablero[1] != 0) return tablero[1];
+    if (tablero[2] == tablero[5] && tablero[5] == tablero[8] && tablero[2] != 0) return tablero[2];
+    //Las diagonales
+    if (tablero[0] == tablero[4] && tablero[4] == tablero[8] && tablero[0] != 0) return tablero[0];
+    if (tablero[2] == tablero[4] && tablero[4] == tablero[6] && tablero[2] != 0) return tablero[2];
+
+    if (numEspacios > 0) {
+        return 0;
+    } else {
+        return 3;
+    }
 }
