@@ -153,7 +153,7 @@ function ia(dificultad) {
                     } while (tablero[celdaRandom] != 0);
                 }
             }
-                tablero[celdaRandom] = 2;
+            tablero[celdaRandom] = 2;
             dibujar();
         }
     } else {
@@ -249,6 +249,20 @@ function mejorJugada() {
         }
     }
 
+    if (tablero[5] == 1 && tablero[6] == 1 && tablero[4] == 2 && countEmptyCells() == 6) {
+        mejorCelda = 8;
+    }
+
     return mejorCelda;
 
+}
+
+function countEmptyCells() {
+    let loop = 0;
+    for (var i = 0; i < tablero.length; i++) {
+        if (tablero[i] == 0) {
+           loop++;
+        }
+    }
+    return loop;
 }
