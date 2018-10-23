@@ -1,7 +1,15 @@
 "use strict";
-var n = 0;
-var l = document.getElementById("number");
-window.setInterval(function () {
-    l.innerHTML = n;
-    n++;
-}, 1000);
+var inicio = 0;
+var crono;
+// Iniciar tiempo
+function iniciarTiempo() {
+    if (inicio == 0) {
+        var n_1 = 1;
+        var l_1 = document.getElementById("number");
+        crono = window.setInterval(function () {
+            l_1.innerHTML = n_1;
+            n_1++;
+        }, 1000);
+        inicio++;
+    }
+}
