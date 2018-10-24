@@ -845,3 +845,13 @@ a.todo-list-item:focus {
   font-size:50px;
   color:#434343;
 }
+
+.article:last-child {
+  padding: 1rem 0;
+  border-bottom: 1px solid #dfdfdf;
+  margin-bottom: 1rem;
+}
+
+.article:first-child {
+  padding: 1rem 0;
+}
