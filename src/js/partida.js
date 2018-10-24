@@ -6,6 +6,13 @@ var crono;
 var celdas = document.getElementsByClassName('celda');
 var consola = document.getElementById("consola");
 var partidaTerminada = false;
+var ganada = false;
+
+function comprobarVictoria(){
+    let time = document.getElementById('number').textContent;
+    enviarPuntos(ganada, time);
+}
+
 
 // Combos ganadores para la IA.
 var COMBOS = {
@@ -97,18 +104,22 @@ function endGame(g) {
             document.getElementById('reiniciarPartida').onclick = () => reiniciarPartida();
             clearInterval(crono);
             fin = true;
+            ganada = true;
+            comprobarVictoria();
             break;
         case 2:
             consola.innerHTML = `¡Ganan los O!<a class="nav-link" id="reiniciarPartida"> Reiniciar</a>`;
             document.getElementById('reiniciarPartida').onclick = () => reiniciarPartida();
             clearInterval(crono);
             fin = true;
+            comprobarVictoria();
             break;
         case 3:
             consola.innerHTML = `¡Empate!<a class="nav-link" id="reiniciarPartida"> Reiniciar</a>`;
             document.getElementById('reiniciarPartida').onclick = () => reiniciarPartida();
             clearInterval(crono);
             fin = true;
+            comprobarVictoria();
             break;
     }
     return fin;
@@ -162,6 +173,7 @@ function reiniciarPartida() {
     clearInterval(crono);
     consola.innerHTML = '';
     partidaTerminada = false;
+    ganada = false;
     dibujar();
 }
 

@@ -1,24 +1,23 @@
-$(document).ready(function () {
+function enviarPuntos(resultado, time) {    
     var token = localStorage.getItem('token');
-    let tiempo = localStorage.getItem('number');
-    let result = localStorage.getItem('consola');
+    let tiempo = parseFloat(time);
+    let result = resultado;
 
     $.ajax({
             method: "POST",
             url: "http://www.miguelcamposrivera.com:3008/tictactoeapi/battle/create",
             dataType: "json",
-            bdata: {number: nu, result: res },
+            data: {win: result, time: tiempo },
             beforeSend: function(xhr) {
                 xhr.setRequestHeader('Authorization', `Bearer ${token}`);
     }
         })
-        .done(function(user) {
-            // Redirijo al usuario logueado a la página de Dashboard
-            location.replace('tablero.html');
+        .done(function( resp ) {
+            console.log(tiempo + " " +result)
         })
         .fail(function( resp ) {
             console.log('ERROR RESPUESTA');
             console.log(resp);
         });
-
-});
+    
+};

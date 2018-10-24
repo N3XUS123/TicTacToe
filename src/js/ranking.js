@@ -1,7 +1,7 @@
 $(document).ready(function () {
     var token = localStorage.getItem('token');
-    var username = localStorage.getItem('username');
     var email = localStorage.getItem('email');
+    var i = 0;
 
     $.ajax({
             method: "GET",
@@ -12,24 +12,27 @@ $(document).ready(function () {
             }
         })
         .done(function (ranking) {
-            for (let usuario = 0; usuario < 5; usuario++) {
-                $("#articleAjax").append(`
-                <div class="article">
-                    <div class="row">
-                        <div class="col-2 date">
-                            <div class="large">${usuario.id}</div>
-                        </div>
-                        <div class="col-10">
-                            <h4>${usuario.username}</h4>
-                            <p><span class="text-success"> ${usuario.points} </span>| ${usuario.time} </p>
-                        </div>
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                `);
-            }
             ranking.forEach(user => {
-                if (user.username == username) {
+                i++;
+                if (i <= 5) {
+                    $("#articleAjax").append(`
+                    <div class="article">
+                        <div class="row">
+                            <div class="col-2 date">
+                                <div class="large">${i}</div>
+                            </div>
+                            <div class="col-10">
+                                <h4>${user.username}</h4>
+                                <p><span class="text-success"> ${user.points} </span>| ${user.time} </p>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    `);
+                }
+
+
+                if (user.email == email) {
                     $("#userPositionAjax").append(`
                         <div class="article text-primary">
                             <div class="row">
