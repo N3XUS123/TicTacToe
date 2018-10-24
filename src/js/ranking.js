@@ -2,6 +2,8 @@ $(document).ready(function () {
     var token = localStorage.getItem('token');
     var email = localStorage.getItem('email');
     var i = 0;
+    
+    if (token == null) location.replace('index.html');
 
     $.ajax({
             method: "GET",
@@ -54,7 +56,4 @@ $(document).ready(function () {
             console.log('ERROR RESPUESTA');
             console.log(resp);
         });
-
-
-
 });
