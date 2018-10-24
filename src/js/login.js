@@ -21,8 +21,9 @@ $(document).ready(function () {
             location.replace('tablero.html');
         })
         .fail(function( resp ) {
-            console.log('ERROR RESPUESTA');
-            console.log(resp);
+            $(document).ready(function () {
+                alert('Email o contraseña incorrectos.'); 
+             });
         });
     });
     
