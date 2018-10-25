@@ -405,7 +405,8 @@ a.bg-primary:hover {
 .sidebar .logout-button {
   position: absolute;
   bottom: 20px;
-  width: 100%;
+  left: 20px;
+  width: 85%;
   text-align: center;
   border-radius: .3rem;
 }
@@ -437,7 +438,7 @@ a.bg-primary:hover {
   }
 
   .sidebar {
-    position: initial;
+    position: inherit;
     padding-bottom: 0px;
     margin-bottom: 1rem;
   }
@@ -447,7 +448,7 @@ a.bg-primary:hover {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 576px) {
   #wrapper.toggled .sidebar-nav {
     display: block;
   }
@@ -818,21 +819,8 @@ a.todo-list-item:focus {
   border-radius: .4rem;
 }
 
-#sidebar {
-  width: 0px;
-}
-@media screen and (max-width: 576px) {
-  #toggleNav {
-    display: none; 
-  }
-  nav {
-    width: 100%!important;
-  }
-  header {
-    margin-left: 0px!important;
-  }
-}
-#wrapper div.col-xl-3.col-lg-6.col-md-6.col-sm-8.col-12{
+
+#wrapper div.col-xl-3.col-lg-6.col-md-6.col-sm-8.col-12 {
   margin: 0 auto;
   margin-top: 10%;
 }
@@ -844,6 +832,14 @@ a.todo-list-item:focus {
 #number {
   font-size:50px;
   color:#434343;
+}
+
+.navbar a {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: .7rem;
+    letter-spacing: .2rem;
+    padding: .75rem 1rem;
 }
 
 .article:last-child {

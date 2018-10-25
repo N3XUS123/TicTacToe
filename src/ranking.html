@@ -28,40 +28,44 @@
 </head>
 
 <body>
-    <div class="container-fluid" id="wrapper">
-        <div class="row">
-            <nav id="sidebar" class="sidebar col-lg-3 bg-faded sidebar-style-1">
-                <h1 class="site-title"><a href="tablero.html"><em class="fa fa-rocket"></em> TicTacToe</a></h1>
-
-                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
-
-                <ul class="nav nav-pills flex-column sidebar-nav">
-                    <li class="nav-item"><a class="nav-link" href="tablero.html"><em class="fa fa-dashboard"></em>
-                            Tablero
-                            <span class="sr-only">(current)</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#"><em class="fa fa-calendar-o"></em> Ranking</a></li>
-                    <a class="logout-button" id="logout"><em class="fa fa-power-off"></em> Signout</a>
-                </ul>
-
-            </nav>
-
-            <main id="main" class="col-md-12 pt-3 pl-4">
-                <header class="page-header row justify-center">
-                    <a href="#" class="btn btn-default col-1" id="toggleNav"><em class="fa fa-bars"></em></a>
-                    <h1 class="float-left text-center text-md-left col-11">Ranking</h1>
-
-                </header>
-                <section class="row">
-
-                    <div id="articleAjax" class="articles-container col-8 mx-auto">
-
-                    </div>
-                    <div id="userPositionAjax" class="articles-container col-8 mx-auto">
-                        
-                    </div>
-                </section>
-            </main>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary mb-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon "></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="tablero.html"><em class="fa fa-rocket"></em> TicTacToe</a></a>
+            <ul class="nav navbar-nav nav-pills sidebar-nav">
+                <li class="nav-item"><a class="nav-link text-light px-2" href="tablero.html"><em class="fa fa-times"></em>
+                        Tablero </a></li>
+                <li class="nav-item"><a class="nav-link text-light active px-2" href="ranking.html"><em class="fa fa-circle-thin"></em>
+                        Ranking</a></li>
+            </ul>
+            <ul class="nav navbar-nav nav-pills sidebar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link text-light px-2 logout-button" id="logout" href="#"><em class="fa fa-power-off"></em>
+                        Signout</a></li>
+            </ul>
         </div>
+    </nav>
+    <div class="container-fluid" id="wrapper">
+        <main id="main">
+            <div class="row">
+                <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 mx-auto">
+                    <header class="page-header justify-center">
+                        <h1>Ranking</h1>
+                        <div class="clear"></div>
+                    </header>
+                    <section class="row">
+
+                        <div id="articleAjax" class="articles-container col-8 mx-auto">
+
+                        </div>
+                        <div id="userPositionAjax" class="articles-container col-8 mx-auto">
+
+                        </div>
+                    </section>
+        </main>
+    </div>
     </div>
 
     <!-- Bootstrap core JavaScript

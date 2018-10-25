@@ -21,7 +21,7 @@ function enviarPuntos(resultado, time) {
             }
         })
         .done(function (resp) {
-            console.log(tiempo + " " + result)
+            
         })
         .fail(function (resp) {
             console.log('ERROR RESPUESTA');
