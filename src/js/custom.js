@@ -13,3 +13,11 @@ $('#toggleNav').on('click', function () {
         $('header').stop(true).animate({marginLeft:0})
     }
 });
+
+$('#logout').click(function (e) { 
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+
+    location.replace("index.html");
+});
