@@ -39,7 +39,7 @@ $(document).ready(function () {
                         <div class="article text-primary">
                             <div class="row">
                                 <div class="col-2 date">
-                                    <div class="large">${user.id}</div>
+                                    <div class="large">${i}</div>
                                 </div>
                                 <div class="col-10">
                                     <h4>${user.username}</h4>
